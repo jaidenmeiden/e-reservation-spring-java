@@ -8,6 +8,7 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -36,6 +37,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "client")
+@NamedQuery(name="Client.findByIdentificacion", query="Select c from Client c where c.indentificationCli = ?1")
 public class Client {
 	@Id
 	@GeneratedValue(generator="system-uuid")
