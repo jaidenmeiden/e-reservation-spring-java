@@ -6,9 +6,10 @@ package com.jaidenmeiden.ereservationspringjava.business.services;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.jaidenmeiden.ereservationspringjava.model.Client;
 import com.jaidenmeiden.ereservationspringjava.business.repository.ClientRepository;
+import com.jaidenmeiden.ereservationspringjava.model.Client;
 
 /**
  * Clase para definir los servicios de cliente
@@ -17,6 +18,7 @@ import com.jaidenmeiden.ereservationspringjava.business.repository.ClientReposit
  *
  */
 @Service
+@Transactional(readOnly = true)
 public class ClientService {
 	
 	private final ClientRepository clientRepository;
@@ -31,6 +33,7 @@ public class ClientService {
 	 * @param Client
 	 * @return
 	 */
+	@Transactional
 	public Client create(Client Client) {
 		return this.clientRepository.save(Client);
 	}
@@ -41,6 +44,7 @@ public class ClientService {
 	 * @param Client
 	 * @return
 	 */
+	@Transactional
 	public Client update(Client Client) {
 		return this.clientRepository.save(Client);
 	}
@@ -50,6 +54,7 @@ public class ClientService {
 	 * 
 	 * @param Client
 	 */
+	@Transactional
 	public void delete(Client Client) {
 		this.clientRepository.delete(Client);
 	}
